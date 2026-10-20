@@ -3,107 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SEO 核心标签，Google 抓取使用 -->
     <title>focusponder | 个人主页 - 思考、学习与记录</title>
     <meta name="description" content="focusponder 个人主页，在这里记录学习笔记、随笔想法与项目记录，分享思考与成长。">
     <link rel="canonical" href="https://focusponder.com">
-
-    <!-- 社交分享标签（可选，对Google本身不是必须，但体验更好） -->
     <meta property="og:title" content="focusponder | 个人主页 - 思考、学习与记录">
     <meta property="og:description" content="focusponder 个人主页，在这里记录学习笔记、随笔想法与项目记录，分享思考与成长。">
     <meta property="og:url" content="https://focusponder.com">
     <meta property="og:type" content="website">
-
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+        html {
+            scroll-behavior: smooth;
+        }
+        :root {
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #1e293b;
+            --muted: #64748b;
+            --border: #e2e8f0;
+            --accent: #2563eb;
+        }
+        .dark {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #f1f5f9;
+            --muted: #94a3b8;
+            --border: #334155;
+            --accent: #60a5fa;
+        }
         body {
-            font-family: "Microsoft Yahei", sans-serif;
-            background-color: #f5f7fa;
-            color: #333;
-            line-height: 1.6;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            transition: background 0.3s, color 0.3s;
         }
-        .container {
-            max-width: 700px;
-            margin: 80px auto;
-            padding: 0 20px;
+        .wrap {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 48px 24px;
         }
-        .card {
-            background: #fff;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 48px;
+        }
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 999px;
+            border: 3px solid var(--border);
+            object-fit: cover;
+        }
+        .theme-btn {
+            padding: 8px 14px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            border-radius: 10px;
+            cursor: pointer;
+            color: var(--text);
+        }
+        .section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 32px;
+            margin-bottom: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
         }
         h1 {
-            font-size: 32px;
-            color: #222;
-            margin-bottom: 12px;
+            font-size: 36px;
+            margin-bottom: 6px;
         }
-        .subtitle {
-            color: #666;
+        .sub {
+            color: var(--muted);
             font-size: 16px;
-            margin-bottom: 30px;
-        }
-        hr {
-            border: none;
-            border-top: 1px solid #eee;
-            margin: 30px 0;
         }
         h2 {
-            font-size: 20px;
-            margin: 20px 0 12px;
-            color: #334;
+            font-size: 22px;
+            margin-bottom: 14px;
         }
         p {
+            color: var(--muted);
             margin-bottom: 16px;
         }
         ul {
             padding-left: 22px;
-            margin-bottom: 16px;
+            color: var(--muted);
+        }
+        li {
+            margin-bottom: 8px;
         }
         a {
-            color: #2563eb;
+            color: var(--accent);
             text-decoration: none;
         }
         a:hover {
             text-decoration: underline;
         }
-        .footer {
-            margin-top: 40px;
+        footer {
+            margin-top: 60px;
             text-align: center;
-            color: #999;
+            color: var(--muted);
             font-size: 14px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="card">
+<div class="wrap">
+    <header>
+        <div>
             <h1>focusponder</h1>
-            <div class="subtitle">个人主页 · 记录与分享</div>
-
-            <hr>
-
-            <h2>关于我</h2>
-            <p>欢迎来到我的个人网站。在这里记录想法、学习笔记和一些有意思的内容。</p>
-
-            <h2>内容清单</h2>
-            <ul>
-                <li>学习笔记</li>
-                <li>随笔想法</li>
-                <li>项目记录</li>
-            </ul>
-
-            <h2>链接</h2>
-            <p>GitHub：<a href="https://github.com/focusponder" target="_blank">github.com/focusponder</a></p>
-
-            <div class="footer">
-                © 2026 focusponder | Powered by GitHub Pages
-            </div>
+            <div class="sub">思考 · 记录 · 成长</div>
         </div>
+        <button class="theme-btn" id="toggle">切换深色</button>
+    </header>
+
+    <div class="section">
+        <h2>👋 关于我</h2>
+        <p>欢迎来到我的个人主页。这里用来沉淀学习笔记、零散想法、项目复盘，不追求繁杂，只记录真实的思考过程。</p>
     </div>
+
+    <div class="section">
+        <h2>📒 内容方向</h2>
+        <ul>
+            <li>技术与学习笔记</li>
+            <li>随笔与观点记录</li>
+            <li>个人项目归档</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>🔗 联系 & 链接</h2>
+        <p>GitHub：<a href="https://github.com/focusponder" target="_blank">github.com/focusponder</a></p>
+    </div>
+
+    <footer>
+        © 2026 focusponder | Powered by GitHub Pages
+    </footer>
+</div>
+<script>
+    const btn = document.getElementById('toggle');
+    btn.onclick = () => {
+        document.documentElement.classList.toggle('dark');
+        if(document.documentElement.classList.contains('dark')){
+            localStorage.theme = 'dark'
+        }else{
+            localStorage.theme = 'light'
+        }
+    }
+</script>
 </body>
 </html>
