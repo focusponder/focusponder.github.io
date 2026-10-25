@@ -1,0 +1,14 @@
+baseURL = "https://focusponder.github.io/"
+title = "focusponder 的博客"
+defaultContentLanguage = "zh-cn"
+theme = "PaperMod"
+
+[params]
+  mainSections = ["posts"]
+  hasCJKLanguage = true
+
+[[menu.main]]
+name = "文章"
+url = "/posts/"
+weight = 1
+
