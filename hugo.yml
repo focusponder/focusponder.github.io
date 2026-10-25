@@ -1,0 +1,50 @@
+baseURL: "https://focusponder.github.io/"
+locale: zh-CN
+title: "focusponder"
+theme: hugo-theme-stack
+paginate: 10
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
+    lineNos: true
+
+params:
+  subtitle: "思考·记录·成长"
+  author:
+    name: focusponder
+    avatar: ""
+
+  widgets:
+    page:
+      - type: toc
+    home:
+      - type: recent-posts
+        limit: 6
+
+  colorScheme:
+    default: auto
+
+menu:
+  main:
+    - identifier: posts
+      name: 文章
+      url: /posts/
+      weight: 1
+    - identifier: archives
+      name: 归档
+      url: /archives/
+      weight: 2
+    - identifier: tags
+      name: 标签
+      url: /tags/
+      weight: 3
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
