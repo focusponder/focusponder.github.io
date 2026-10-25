@@ -1,4 +1,4 @@
-baseURL = "https://focusponder.github.io/"
+baseURL = "https://focusponder.com/"
 title = "focusponder 的博客"
 defaultContentLanguage = "zh-cn"
 theme = "PaperMod"
