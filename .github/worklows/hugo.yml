@@ -2,7 +2,8 @@ name: Build and Deploy
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:  # 重点：开启手动运行按钮
+  # 开启手动运行按钮
+  workflow_dispatch:
 
 permissions:
   contents: read
